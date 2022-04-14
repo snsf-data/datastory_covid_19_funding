@@ -1,0 +1,390 @@
+---
+params: 
+  title: ""
+  publication_date: "19.04.2022"
+  doi: ""
+output: 
+  html_document:
+    anchor_sections: false
+    theme: null
+    highlight: null
+    mathjax: null
+    css: ["style.css", "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap"]
+    self_contained: true
+title: "`r params$title`"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r general-setup, include=FALSE}
+## This file contains the GERMAN version of the data story
+
+# Set general chunk options
+knitr::opts_chunk$set(echo = FALSE, fig.showtext = TRUE, fig.retina = 3, 
+                      fig.align = "center", warning = FALSE, message = FALSE)
+
+# Install pacman package if needed
+if (!require("pacman")) {
+  install.packages("pacman")
+  library(pacman)
+}
+
+# Install snf.datastory package if not available, otherwise load it
+if (!require("snf.datastory")) {
+  if (!require("devtools")) {
+    install.packages("devtools")
+    library(devtools)
+  }
+  install_github("snsf-data/snf.datastory")
+  library(snf.datastory)
+}
+
+# Load packages
+p_load(tidyverse,
+       lubridate,
+       scales, 
+       conflicted, 
+       jsonlite,
+       here, 
+       ggiraph,
+       snf.datastory,
+       lintr,
+       dbplyr,      
+       readxl,
+       tableone,
+       kableExtra,
+       forcats,
+       tm,
+       wordcloud2,
+       wordcloud)
+
+# Conflict preferences
+conflict_prefer("filter", "dplyr")
+conflict_prefer("select", "dplyr")
+conflict_prefer("get_datastory_theme", "snf.datastory")
+conflict_prefer("get_datastory_scheme", "snf.datastory")
+conflict_prefer("here", "here")
+
+
+options(width = 120)
+# Don't show the summarise messages
+options(dplyr.summarise.inform = FALSE)
+
+# Deactivate scientific notation
+options(scipen = 999)
+
+# Increase showtext package font resolution
+showtext_opts(dpi = 320)
+
+# Set the locale for date formatting (Windows)
+Sys.setlocale("LC_TIME")
+
+# Create function to print number with local language-specific format 
+print_num <- function(x) snf.datastory::print_num(x, lang = "de")
+
+# Knitr hook for local formatting of printed numbers
+knitr::knit_hooks$set(
+  inline <- function(x) {
+    if (!is.numeric(x)) {
+      x
+    } else {
+      print_num(x)
+    }
+  }
+)
+
+
+```
+
+```{r print-header-infos, results='asis'}
+# Add publication date to header
+cat(format(as_datetime(params$publication_date), "%d.%m.%Y"))
+```
+
+```{r story-specific-setup, include=FALSE, message=FALSE}
+covid_grants_df <- read_excel("input/covid_grants_df.xlsx")
+covid_publications_grants_df <- read_excel("input/covid_publications_grants_df.xlsx")
+
+n_applications <- nrow(covid_grants_df)
+n_publications <- nrow(covid_publications_grants_df)
+```
+
+<!-- Short lead (2-3 sentences) in bold -->
+
+__Coronavirus-related research funded by the Swiss National Science Foundation is successfully delivering fast and beneficial results.__
+
+The coronavirus pandemic that we have been living with since early 2020 has highlighted the importance of scientific research. Since it was completely unknown until it struck, the virus had to be decoded quickly so that scientists could develop effective medicines and vaccines and establish what preventive measures needed to be taken. The Swiss National Science Foundation contributed to these efforts by funding various research projects. Here is an overview. 
+
+### Understanding the virus
+
+The SNSF funded or is still funding `r n_applications` coronavirus-related projects, to which it awarded a total of `r round(sum(covid_grants_df$AmountGranted) / 1000000)` million francs. 
+
+The sheer variety of the projects is best illustrated by a word cloud. This provides a visual representation of how often specific keywords have been used in the various coronavirus projects. It shows clearly that scientists’ number one priority is to gain a better understanding of the virus and the associated health risks.
+
+
+<div class="plot-box">
+<div class="plot-title">Word cloud on Covid-19 projects</div>
+
+```{r, out.width="100%"}
+text <- paste0(covid_grants_df$Keywords, collapse = " ")
+docs <- Corpus(VectorSource(text))
+
+docs <- docs %>%
+  tm_map(removeNumbers) %>%
+  tm_map(removePunctuation) %>%
+  tm_map(stripWhitespace)
+docs <- tm_map(docs, content_transformer(tolower))
+docs <- tm_map(docs, removeWords, stopwords("english"))
+
+dtm <- TermDocumentMatrix(docs) 
+matrix <- as.matrix(dtm) 
+words <- sort(rowSums(matrix),decreasing=TRUE) 
+df <- data.frame(word = names(words),freq=words)
+
+set.seed(123) # for reproducibility 
+wordcloud(words = df$word, freq = df$freq, min.freq = 3,
+          max.words=200, random.order=FALSE, rot.per=0.35,
+          colors=brewer.pal(8, "Dark2"))
+```
+
+</div>
+
+
+### Different funding formats
+
+The projects have been funded under various schemes: a special call for coronavirus projects resulted in `r covid_grants_df %>% count(CallGroup_Fr) %>% filter(CallGroup_Fr == "Special Call on Coronaviruses 2020") %>% pull(n)` projects being financed from summer 2020, while the <a href="https://www.nfp78.ch/en/" target="_blank">National Research Programme «$~$Covid-19$~$» (NRP 78)</a> mandated by the Federal Council has provided funding for `r covid_grants_df %>% count(CallGroup_Fr) %>% filter(CallGroup_Fr == "PNR 78 Covid-19 2020") %>% pull(n)` projects. The SNSF’s flagship project funding scheme also attracted proposals associated to a greater or lesser extent with coronavirus – both before the pandemic and since its onset. The number of projects in question is `r covid_grants_df %>% count(CallGroup_En) %>% filter(CallGroup_En == "Regular SNSF Call") %>% pull(n)` and encompass a total `r n_distinct(unlist(str_split(covid_grants_df$ApplicantNumbers, ";")))` applicants.
+
+
+<div class="plot-box">
+
+<div class="plot-title">Number and percentage of Covid-related grant projects (total of `r nrow(covid_grants_df)`) within each call group</div>
+
+```{r, message=FALSE, out.width="100%"}
+covid_grants_df %>% 
+  count(CallGroup_En) %>% 
+  mutate(prop = n / sum(n)) %>% 
+  ggplot(aes(x = reorder(CallGroup_En, -prop), y = prop)) + 
+  geom_col(fill = get_datastory_scheme()[1]) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  geom_text(
+    aes(
+      y = prop + 0.02,
+      label = paste0("n = ", n)),
+    size = 2.7,
+    color = "black",
+    family = "Source Sans Pro") + 
+  labs(x = "", y = "") +
+  get_datastory_theme(gridline_axis = "y") +
+  scale_fill_manual(values = get_datastory_scheme()) +
+  theme(
+    axis.text.x = element_text(size = 8),
+    axis.ticks.x = element_line(color = "#d3d3d3", size = 0.3))
+```
+
+</div>
+
+
+### Beneficial results
+
+Coronavirus-related projects last an average of two years. Some have already delivered their results and produced publications that have helped drive forward the pandemic response. There have been `r covid_publications_grants_df %>% filter(Level1_Discipline == "Biology and Medicine") %>% count(Level1_Discipline) %>% pull(n)` publications in the life sciences and `r covid_publications_grants_df %>% filter(Level1_Discipline == "Humanities and Social Sciences") %>% count(Level1_Discipline) %>% pull(n)` in the social sciences and humanities. These numbers are set to rise, given that `r round(covid_grants_df %>% count(State_En) %>% filter(State_En == "ongoing") %>%  pull(n) / sum(covid_grants_df %>% count(State_En) %>% pull(n)) * 100)`\% of projects are still ongoing.
+
+Here are two examples:  
+
+* In their <a href="https://www.cell.com/cell-reports/fulltext/S2211-1247(21)00920-7?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS2211124721009207%3Fshowall%3Dtrue" target="_blank">publication</a>, the team led by Volker Thiel, a virologist at the University of Bern and the Institute of Virology and Immunology IVI, highlight the potential of their nasally administered live attenuated vaccine. Its development is ongoing and entering the clinical trial phase.   
+* An <a href="https://www.manchesteropenhive.com/view/journals/hrv/7/2/article-p41.xml" target="_blank">article</a> co-authored by researcher Marc-Antoine Berthod looks at the changes that the pandemic has brought about in funeral practices.  
+
+The SNSF has also communicated a number of results, notably:  
+
+*	A <a href="https://www.snf.ch/de/BZARkjTMtrt48Gcb/news/einfluss-von-grenz-und-schulschliessungen-auf-die-eindaemmung-des-coronavirus" target="_blank">statistical model</a> for measuring the impact of border and school closures  
+*	The development of a <a href="https://www.snf.ch/de/IR4xqilNfvUoe4E7/news/modell-von-sars-cov-2-verbessert-forschung-und-entwicklung-von-medikamenten" target="_blank">non-contagious model of SARS-CoV-2</a> to improve research and drug development  
+*	A <a href="https://www.snf.ch/de/6AywkKU0LqBlQ92j/news/long-covid-neue-studienergebnisse" target="_blank">cohort study</a> of 3,000 people, which revealed a correlation between the severity of infection and the onset of long Covid symptoms  
+*	A method for quickly and cost-efficiently estimating the <a href="https://www.snf.ch/de/Mhz1a3piOEoSgb2B/news/mit-abwasser-schnell-und-kostenguenstig-zum-r-wert" target="_blank">reproduction rate</a> of coronavirus using wastewater  
+*	New <a href="https://www.nfp78.ch/de/news/des-candidats-vaccins-suisses-entament-la-phase-d-etudes-cliniques/" target="_blank">Swiss vaccine candidates</a> developed as part of NRP 78 (<a href="https://www.snf.ch/de/XZ6J2kZHkf5aMROA/news/innovative-forschung-zu-neuen-impfstoffen" target="_blank">see also</a>)
+
+
+### Life sciences top the rankings
+
+A more detailed analysis of the projects being funded shows that nearly two thirds of them are in the life sciences, nearly one third in the social sciences and humanities and just a small number in mathematics, natural and engineering sciences. This distribution reflects the nature of the challenge presented by the pandemic and contrasts with SNSF-funded projects as a whole, where there is a more even spread. 
+
+However, this situation will change when the new National Research Programme <a href="https://www.nfp80.ch/en/" target="_blank">«$~$Covid-19 in Society$~$»</a> (NRP 80) is launched in 2022, since this NRP will primarily target the social sciences and humanities. The projects will be selected during summer 2022. 
+
+
+<div class="plot-box">
+
+<div class="plot-title">Number and percentage of Covid-related grant projects (total of `r nrow(covid_grants_df)`) per research area</div>
+
+```{r, out.width="100%"}
+covid_grants_df <- covid_grants_df %>% 
+  mutate(research_area = as.factor(
+    case_when(
+      Level1_Discipline == "Biology and Medicine" ~ "LS",
+      Level1_Discipline == "Humanities and Social Sciences" ~ "SSH",
+      Level1_Discipline == "Mathematics, Natural- and Engineering Sciences" ~ "MINT")),
+    research_area = factor(research_area, 
+                           levels = c("SSH", "LS", "MINT"), 
+                           ordered = TRUE))
+
+covid_grants_df %>% 
+  count(research_area) %>% 
+  mutate(prop = n / sum(n)) %>% 
+  ggplot(aes(x = research_area, y = prop)) + 
+  geom_col(fill = get_datastory_scheme()[1]) +
+  scale_y_continuous(labels = scales::percent) +
+  geom_text(
+    aes(
+      y = prop + 0.02,
+      label = paste0("n = ", n)),
+    size = 3,
+    color = "black",
+    family = "Source Sans Pro") +
+  labs(x = "", y = "") +
+  get_datastory_theme(gridline_axis = "y") +
+  scale_fill_manual(values = get_datastory_scheme()) +
+  theme(
+    axis.text.x = element_text(size = 8.5),
+    axis.ticks.x = element_line(color = "#d3d3d3", size = 0.3))
+```
+
+</div>
+
+Not only do the life sciences top the rankings for the number of projects funded, they also lead on the amounts awarded, having received more than `r round(sum(covid_grants_df %>% filter(research_area == "LS") %>% pull(AmountGranted)) / 1000000)` million Swiss francs from a total of `r round(sum(covid_grants_df$AmountGranted) / 1000000)` million francs for all projects – or in other words, more than three quarters of the funding for coronavirus research. 
+
+<div class="plot-box">
+<div class="plot-title">Total amount of money awarded (in Swiss francs) on `r n_applications` Covid-related grant projects for each research area</div>
+
+```{r}
+covid_grants_df %>%  
+  group_by(research_area) %>% 
+  summarise(total_amount = sum(AmountGranted),
+            `Number Of Grants` = n()) %>% 
+  mutate(total_amount = prettyNum(total_amount, "'")) %>% 
+  rename(`Research Area` = "research_area",
+         `Total Amount Spent (CHF)` = "total_amount") %>% 
+  kable(label = "money_discipline", 
+        format = "html",
+        escape = FALSE, 
+        align = c("l", "r", "r"), 
+        col.names = c("Research area", "Total amount awarded (CHF)", "Number of grant projects")) %>%
+  kable_material(c("striped", "hover"))
+```
+</div>
+
+The chart below shows the number and percentage of coronavirus-related projects in each discipline. Once again, it is clear that certain disciplines predominate. It comes as no surprise that preventive medicine tops the list. It is followed by basic biological research, where most of the projects are aimed at better understanding the virus. On the other hand, some humanities and social science projects are investigating society’s responses to the pandemic and its consequences. 
+
+<div class="plot-box">
+<div class="plot-title">Number and percentage of Covid-related grant projects (total of `r nrow(covid_grants_df)`) per research discipline</div>
+```{r, out.width="100%"}
+prev_med <- "Preventive Medicine (Epidemiology/Early Diagnosis/Prevention)"
+soz <- "Sociology, social work, political sciences, media and communication studies, health"
+theo <- "Theology & religious studies, history, classical studies, archaeology, prehistory and early history"
+
+covid_grants_df %>% 
+  count(Level2_Discipline) %>% 
+  mutate(prop = n / sum(n),
+         Level2_Discipline = as.factor(Level2_Discipline),
+         Level2_Discipline = 
+           fct_recode(Level2_Discipline,
+                      `Preventive Medicine` = prev_med,
+                      `Sociology, social work, political sciences and Others` = soz,
+                      `Theology & Religious Studies & History` = theo,
+                      `Economics & Law` = "Economics, law",
+                      `Psychology & Educational Studies` = 
+                        "Psychology, educational studies",
+                      `Ethnology, Social & Human Geography` = 
+                        "Ethnology, social and human geography",
+                      `Linguistics & Literature & Philosophy` = 
+                        "Linguistics and literature, philosophy",
+                      `Art & Architecture` = 
+                        "Art studies, musicology, theatre and film studies, architecture")) %>% 
+  ggplot(aes(x = reorder(Level2_Discipline, prop), y = prop)) + 
+  geom_col(fill = get_datastory_scheme()[1]) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  geom_text(
+    aes(
+      y = prop + 0.01,
+      label = paste0("n = ", n)),
+    size = 2.5,
+    color = "black",
+    family = "Source Sans Pro") +
+  labs(x = "", y = "") +
+  get_datastory_theme(gridline_axis = "x") +
+  scale_fill_manual(values = get_datastory_scheme()) +
+  theme(
+    axis.text.x = element_text(size = 7),
+    axis.ticks.x = element_line(color = "#d3d3d3", size = 0.3)) +
+    # scale_x_discrete(labels = function(x) str_wrap(x, width = 10)) +
+  coord_flip()
+
+seven_top <- covid_grants_df %>% 
+  count(MainDisciplineLevel2_En) %>% 
+  arrange(-n) %>%
+  top_n(7) %>% 
+  pull(n)
+```
+
+</div>
+
+### Basic research requires significant funding
+
+Examining the most represented disciplines among the projects funded, it becomes clear that the top six of the seven disciplines receiving the largest amount of funding are in the life sciences. The data we have cover `r n_distinct(covid_grants_df$MainDisciplineLevel2_En)` different disciplines, but the majority of projects – a total of `r sum(seven_top)`, or `r round(sum(seven_top) / nrow(covid_grants_df) * 100)` \% – are in one of the seven most represented disciplines.
+
+Basic research is time-consuming and laborious; the table shows that the discipline that received most money – namely `r round(sum(covid_grants_df %>% filter(MainDisciplineLevel2_En == "Basic Biological Research") %>% pull(AmountGranted)) / 1000000, 1)` million francs – is basic biological research. 
+
+
+<div class="plot-box">
+
+<div class="plot-title">Total amount awarded (in Swiss francs) for Covid-related grant projects in the seven most represented disciplines</div>
+
+```{r, warning=FALSE}
+prev_med <- "Preventive Medicine (Epidemiology/Early Diagnosis/Prevention)"
+soz <- "Sociology, social work, political sciences, media and communication studies, health"
+
+covid_grants_df %>% 
+  filter(MainDisciplineLevel2_En %in% c("Preventive Medicine (Epidemiology/Early Diagnosis/Prevention)",
+                                        "Basic Biological Research",
+                                        "Sociology, social work, political sciences, media and communication studies, health",
+                                        "Clinical Medicine",
+                                        "Psychology, educational studies",
+                                        "Experimental Medicine",
+                                        "Basic Medical Sciences")) %>% 
+  mutate(Level2_Discipline = as.factor(Level2_Discipline),
+         Level2_Discipline = 
+           fct_recode(Level2_Discipline,
+                      `Preventive Medicine` = prev_med,
+                      `Sociology, social work, political<br>sciences and Others` = soz,
+                      `Theology &amp; Religious Studies & History` = theo,
+                      `Economics &amp; Law` = "Economics, law",
+                      `Psychology &amp; Educational Studies` = 
+                        "Psychology, educational studies",
+                      `Ethnology, Social &amp; Human Geography` = 
+                        "Ethnology, social and human geography",
+                      `Linguistics &amp; Literature & Philosophy` = 
+                        "Linguistics and literature, philosophy",
+                      `Art &amp; Architecture` = 
+                        "Art studies, musicology, theatre and film studies, architecture")) %>% 
+  group_by(Level2_Discipline) %>% 
+  summarise(`Amount Granted (CHF)` = prettyNum(sum(AmountGranted), "'")) %>% 
+  kable(linesep = "",
+        booktabs = TRUE,
+        format = "html",
+        escape = FALSE, 
+        align = c("l", "r"), 
+        col.names = c("Research dicipline", "Amount awarded (CHF)"),
+        label = "disciplines_amount") %>%
+  kable_material(c("striped", "hover"))
+```
+</div
+
+<div class="info-box">
+
+### Covid-19 project registry
+
+All coronavirus-related research projects have been collected in the <a href="https://data.snf.ch/covid-19" target="_blank">Covid-19 research project registry</a>.
+This project registry provides an overview of Swiss Covid-19 research funded by the SNSF, Innosuisse and the European research and innovation funding programme Horizon 2020.
+
+</div>
+
+The data, text and code associated with this data story are available on <a href="https://github.com/snsf-data/datastory_covid_19_funding" target="_blank">Github</a> and archived on   <a href="https://doi.org/10.46446/datastory.covid-19-funding" target="_blank">Zenodo</a>. DOI: 10.46446/datastory.covid-19-funding
+
+

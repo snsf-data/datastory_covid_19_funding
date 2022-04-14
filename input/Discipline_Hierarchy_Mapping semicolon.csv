@@ -1,0 +1,143 @@
+Level3_Number;Level3_Discipline;Level2_Number;Level2_Discipline;Level1_Number;Level1_Discipline
+10101;Philosophy;10200;Linguistics and literature, philosophy;10000;Humanities and Social Sciences
+10102;Religious studies, Theology;10100;Theology & religious studies, history, classical studies, archaeology, prehistory and early history;10000;Humanities and Social Sciences
+10103;Ecclesiastical history;10100;Theology & religious studies, history, classical studies, archaeology, prehistory and early history;10000;Humanities and Social Sciences
+10104;Educational science and Pedagogy;10500;Psychology, educational studies;10000;Humanities and Social Sciences
+10105;Psychology;10500;Psychology, educational studies;10000;Humanities and Social Sciences
+10201;Sociology;10600;Sociology, social work, political sciences, media and communication studies, health;10000;Humanities and Social Sciences
+10202;Political science;10600;Sociology, social work, political sciences, media and communication studies, health;10000;Humanities and Social Sciences
+10203;Economics;10700;Economics, law;10000;Humanities and Social Sciences
+10204;Science of management;10700;Economics, law;10000;Humanities and Social Sciences
+10205;Legal sciences;10700;Economics, law;10000;Humanities and Social Sciences
+10206;Social geography and ecology;10400;Ethnology, social and human geography;10000;Humanities and Social Sciences
+10207;Communication sciences;10600;Sociology, social work, political sciences, media and communication studies, health;10000;Humanities and Social Sciences
+10301;General history (without pre-and early history);10100;Theology & religious studies, history, classical studies, archaeology, prehistory and early history;10000;Humanities and Social Sciences
+10302;Swiss history;10100;Theology & religious studies, history, classical studies, archaeology, prehistory and early history;10000;Humanities and Social Sciences
+10303;Ancient history and Classical studies;10100;Theology & religious studies, history, classical studies, archaeology, prehistory and early history;10000;Humanities and Social Sciences
+10401;Prehistory;10100;Theology & religious studies, history, classical studies, archaeology, prehistory and early history;10000;Humanities and Social Sciences
+10402;Archaeology;10100;Theology & religious studies, history, classical studies, archaeology, prehistory and early history;10000;Humanities and Social Sciences
+10403;Ethnology;10400;Ethnology, social and human geography;10000;Humanities and Social Sciences
+10404;Visual arts and Art history;10300;Art studies, musicology, theatre and film studies, architecture;10000;Humanities and Social Sciences
+10405;Musicology;10300;Art studies, musicology, theatre and film studies, architecture;10000;Humanities and Social Sciences
+10406;Theatre and Cinema;10300;Art studies, musicology, theatre and film studies, architecture;10000;Humanities and Social Sciences
+10407;Architecture and Social urban science;10300;Art studies, musicology, theatre and film studies, architecture;10000;Humanities and Social Sciences
+10501;German and English languages and literature;10200;Linguistics and literature, philosophy;10000;Humanities and Social Sciences
+10502;Romance languages and literature;10200;Linguistics and literature, philosophy;10000;Humanities and Social Sciences
+10503;Other languages and literature;10200;Linguistics and literature, philosophy;10000;Humanities and Social Sciences
+10601;Social work;10600;Sociology, social work, political sciences, media and communication studies, health;10000;Humanities and Social Sciences
+10602;Health;10600;Sociology, social work, political sciences, media and communication studies, health;10000;Humanities and Social Sciences
+10603;Arts;10300;Art studies, musicology, theatre and film studies, architecture;10000;Humanities and Social Sciences
+10604;Music, Theatre;10300;Art studies, musicology, theatre and film studies, architecture;10000;Humanities and Social Sciences
+10605;Applied psychology;10500;Psychology, educational studies;10000;Humanities and Social Sciences
+10607;Applied linguistics;10200;Linguistics and literature, philosophy;10000;Humanities and Social Sciences
+20100;Mathematics;20100;Mathematics;20000;Mathematics, Natural- and Engineering Sciences
+20200;Astronomy, Astrophysics and Space Sciences;20200;Astronomy, Astrophysics and Space Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20301;Physical Chemistry;20300;Chemistry;20000;Mathematics, Natural- and Engineering Sciences
+20303;Inorganic Chemistry;20300;Chemistry;20000;Mathematics, Natural- and Engineering Sciences
+20304;Organic Chemistry;20300;Chemistry;20000;Mathematics, Natural- and Engineering Sciences
+20401;Theoretical Physics;20400;Physics;20000;Mathematics, Natural- and Engineering Sciences
+20402;Nuclear Physics;20400;Physics;20000;Mathematics, Natural- and Engineering Sciences
+20403;Particle Physics;20400;Physics;20000;Mathematics, Natural- and Engineering Sciences
+20404;Condensed Matter Physics;20400;Physics;20000;Mathematics, Natural- and Engineering Sciences
+20405;Technical Physics;20400;Physics;20000;Mathematics, Natural- and Engineering Sciences
+20406;Plasma Physics;20400;Physics;20000;Mathematics, Natural- and Engineering Sciences
+20409;Other disciplines of Physics;20400;Physics;20000;Mathematics, Natural- and Engineering Sciences
+20501;Civil Engineering;20500;Engineering Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20502;Mechanical Engineering;20500;Engineering Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20503;Fluid Dynamics;20500;Engineering Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20504;Electrical Engineering;20500;Engineering Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20505;Material Sciences;20500;Engineering Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20506;Information Technology;20500;Engineering Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20507;Chemical Engineering;20500;Engineering Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20508;Microelectronics. Optoelectronics;20500;Engineering Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20509;Agricultural Engineering;20500;Engineering Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20510;Forest Engineering;20500;Engineering Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20511;Other disciplines of Engineering Sciences;20500;Engineering Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20701;Pedology;20700;Environmental Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20702;Geomorphology;20700;Environmental Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20703;Meteorology;20700;Environmental Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20704;Climatology. Atmospherical Chemistry, Aeronomy;20700;Environmental Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20705;Hydrology, Limnology, Glaciology;20700;Environmental Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20706;Oceanography;20700;Environmental Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20709;Other disciplines of Environmental Sciences;20700;Environmental Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20801;Geology;20800;Earth Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20802;Geophysics;20800;Earth Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20803;Geochemistry;20800;Earth Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20804;Geochronology;20800;Earth Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20805;Palaeontology;20800;Earth Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20806;Mineralogy;20800;Earth Sciences;20000;Mathematics, Natural- and Engineering Sciences
+20809;Other disciplines of Earth Sciences;20800;Earth Sciences;20000;Mathematics, Natural- and Engineering Sciences
+30101;Biochemistry;30100;Basic Biological Research;30000;Biology and Medicine
+30102;Molecular Biology;30100;Basic Biological Research;30000;Biology and Medicine
+30103;Cellular Biology, Cytology;30100;Basic Biological Research;30000;Biology and Medicine
+30104;Genetics;30100;Basic Biological Research;30000;Biology and Medicine
+30105;Embryology, Developmental Biology;30100;Basic Biological Research;30000;Biology and Medicine
+30106;Radiobiology;30100;Basic Biological Research;30000;Biology and Medicine
+30107;Experimental Microbiology;30100;Basic Biological Research;30000;Biology and Medicine
+30108;Biophysics;30100;Basic Biological Research;30000;Biology and Medicine
+30201;Botany;30200;General Biology;30000;Biology and Medicine
+30202;Zoology;30200;General Biology;30000;Biology and Medicine
+30203;Paleontology (biol.);30200;General Biology;30000;Biology and Medicine
+30204;Anthropology, Primatology;30200;General Biology;30000;Biology and Medicine
+30205;Agricultural and Forestry Sciences;30200;General Biology;30000;Biology and Medicine
+30206;Environmental Research;30200;General Biology;30000;Biology and Medicine
+30207;Ecology;30200;General Biology;30000;Biology and Medicine
+30209;Animal Breeding;30200;General Biology;30000;Biology and Medicine
+30301;Structural Research;30300;Basic Medical Sciences;30000;Biology and Medicine
+30302;Neurophysiology and Brain Research;30300;Basic Medical Sciences;30000;Biology and Medicine
+30303;Cardiovascular Research;30300;Basic Medical Sciences;30000;Biology and Medicine
+30304;Endocrinology;30300;Basic Medical Sciences;30000;Biology and Medicine
+30305;Physiology : other topics;30300;Basic Medical Sciences;30000;Biology and Medicine
+30306;Pharmacology, Pharmacy;30300;Basic Medical Sciences;30000;Biology and Medicine
+30307;Medical Microbiology;30300;Basic Medical Sciences;30000;Biology and Medicine
+30401;Experimental Cancer Research;30400;Experimental Medicine;30000;Biology and Medicine
+30402;Pathophysiology;30400;Experimental Medicine;30000;Biology and Medicine
+30403;Immunology, Immunopathology;30400;Experimental Medicine;30000;Biology and Medicine
+30405;Nutritional Research, Vitaminology;30400;Experimental Medicine;30000;Biology and Medicine
+30407;Ethology;30400;Experimental Medicine;30000;Biology and Medicine
+30701;Internal Medicine;30700;Clinical Medicine;30000;Biology and Medicine
+30702;Surgery;30700;Clinical Medicine;30000;Biology and Medicine
+30703;Clinical Cancer Research;30700;Clinical Medicine;30000;Biology and Medicine
+30704;Clinical Pharmacology;30700;Clinical Medicine;30000;Biology and Medicine
+30705;Dermatology;30700;Clinical Medicine;30000;Biology and Medicine
+30706;Gynaecology;30700;Clinical Medicine;30000;Biology and Medicine
+30707;Paediatrics;30700;Clinical Medicine;30000;Biology and Medicine
+30708;Neurology, Psychiatry;30700;Clinical Medicine;30000;Biology and Medicine
+30709;Otorhinolaryngology;30700;Clinical Medicine;30000;Biology and Medicine
+30710;Ophthalmology;30700;Clinical Medicine;30000;Biology and Medicine
+30711;Dentistry;30700;Clinical Medicine;30000;Biology and Medicine
+30712;Tropical Medicine;30700;Clinical Medicine;30000;Biology and Medicine
+30713;Veterinary Medicine;30700;Clinical Medicine;30000;Biology and Medicine
+30714;Biomedical Engineering;30700;Clinical Medicine;30000;Biology and Medicine
+30715;Clinical Cardiovascular Research;30700;Clinical Medicine;30000;Biology and Medicine
+30716;Clinical Endocrinology;30700;Clinical Medicine;30000;Biology and Medicine
+30717;Clinical Pathophysiology;30700;Clinical Medicine;30000;Biology and Medicine
+30718;Clinical Immunology and Immunopathology;30700;Clinical Medicine;30000;Biology and Medicine
+30719;Clinical Nutritional Research;30700;Clinical Medicine;30000;Biology and Medicine
+30720;Geriatrics;30700;Clinical Medicine;30000;Biology and Medicine
+30721;Sport Medicine;30700;Clinical Medicine;30000;Biology and Medicine
+30801;Congenital Disorders;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30802;Mental Disorders, Psychosomatic Diseases;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30803;Addictive Diseases;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30804;Accidents;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30805;Cancer;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30806;Cardiovascular Diseases;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30807;Metabolic Disorders;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30808;Infectious Diseases;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30809;Diseases of Bones and Joints;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30810;Oral Preventive Medicine;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30811;Respiratory Diseases;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30812;Methods of Epidemiology and Preventive Medicine;30800;Preventive Medicine (Epidemiology/Early Diagnosis/Prevention);30000;Biology and Medicine
+30901;Group Medicine;30900;Social Medicine;30000;Biology and Medicine
+30902;Social Paediatrics;30900;Social Medicine;30000;Biology and Medicine
+30903;Medico-Social Problems of Youth;30900;Social Medicine;30000;Biology and Medicine
+30904;Medico-Social Problems of the Elderly;30900;Social Medicine;30000;Biology and Medicine
+30905;Rehabilitation;30900;Social Medicine;30000;Biology and Medicine
+30906;Human Ecology;30900;Social Medicine;30000;Biology and Medicine
+30907;Environmental Toxicology;30900;Social Medicine;30000;Biology and Medicine
+30908;Dietetics;30900;Social Medicine;30000;Biology and Medicine
+30909;Occupational Medicine, Ergonomy;30900;Social Medicine;30000;Biology and Medicine
+30910;Health Education;30900;Social Medicine;30000;Biology and Medicine
+30911;Public Health and Health Services;30900;Social Medicine;30000;Biology and Medicine
+30912;Medical Statistics;30900;Social Medicine;30000;Biology and Medicine
+50000;Interdisciplinary;50000;Interdisciplinary;50000;Interdisciplinary
