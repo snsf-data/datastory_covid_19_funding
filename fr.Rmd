@@ -112,9 +112,9 @@ n_publications <- nrow(covid_publications_grants_df)
 
 <!-- Short lead (2-3 sentences) in bold -->
 
-__Le Fonds national suisse soutient la recherche en lien avec le coronavirus. Avec succès: les résultats sont rapides et utiles.__
+__Le FNS soutient la recherche en lien avec le coronavirus. Avec succès: les résultats sont rapides et utiles.__
 
-La pandémie de coronavirus qui nous touche depuis le début de l’année 2020 a mis en évidence l’importance de la recherche scientifique. Ce virus inconnu jusqu’alors devait être rapidement décrypté pour, entre autres, pouvoir développer des médicaments et vaccins efficaces et déterminer quelles mesures de prévention s’imposaient. Le Fonds national suisse a participé à cet effort en finançant de nombreux projets de recherche. Aperçu. 
+La pandémie de coronavirus qui nous touche depuis le début de l’année 2020 a mis en évidence l’importance de la recherche scientifique. Ce virus inconnu jusqu’alors devait être rapidement décrypté pour, entre autres, pouvoir développer des médicaments et vaccins efficaces et déterminer quelles mesures de prévention s’imposaient. Le FNS a participé à cet effort en finançant de nombreux projets de recherche. Aperçu. 
 
 ### Un virus à appréhender
 
@@ -199,21 +199,21 @@ Deux exemples:
 
 Le FNS a aussi communiqué sur certains résultats. Il a notamment informé sur:  
 
-* Un <a href="https://www.snf.ch/de/BZARkjTMtrt48Gcb/news/einfluss-von-grenz-und-schulschliessungen-auf-die-eindaemmung-des-coronavirus" target="_blank">modèle statistique</a> qui a permis de mesurer l’impact des fermetures de frontières et d’écoles  
-* La création d’un <a href="https://www.snf.ch/de/IR4xqilNfvUoe4E7/news/modell-von-sars-cov-2-verbessert-forschung-und-entwicklung-von-medikamenten" target="_blank">modèle non contagieux du SARS-CoV-2</a> pour améliorer la recherche et le développement de médicaments  
-* Une <a href="https://www.snf.ch/de/6AywkKU0LqBlQ92j/news/long-covid-neue-studienergebnisse" target="_blank">étude de cohorte</a> (3000 personnes) qui a mis en évidence l’existence d’une corrélation entre la gravité de l’infection et l’apparition de symptômes du Covid long  
-* Une méthode pour estimer rapidement et à moindre coût le <a href="https://www.snf.ch/de/Mhz1a3piOEoSgb2B/news/mit-abwasser-schnell-und-kostenguenstig-zum-r-wert" target="_blank">taux de reproduction</a> du coronavirus à partir des eaux usées  
-* Des <a href="https://www.nfp78.ch/fr/news/des-candidats-vaccins-suisses-entament-la-phase-d-etudes-cliniques/" target="_blank">candidats vaccins suisses</a>, développés dans le cadres du PNR 78, entament la phase d’études cliniques (<a href="https://www.snf.ch/de/XZ6J2kZHkf5aMROA/news/innovative-forschung-zu-neuen-impfstoffen" target="_blank">voir aussi</a>)  
+* Un <a href="https://www.snf.ch/fr/BZARkjTMtrt48Gcb/news/coronavirus-limpact-des-fermetures-de-frontieres-et-decoles" target="_blank">modèle statistique</a> qui a permis de mesurer l’impact des fermetures de frontières et d’écoles  
+* La création d’un <a href="https://www.snf.ch/fr/IR4xqilNfvUoe4E7/news/un-modele-du-sars-cov-2-ameliore-la-recherche-et-le-developpement-de-medicaments" target="_blank">modèle non contagieux du SARS-CoV-2</a> pour améliorer la recherche et le développement de médicaments  
+* Une <a href="https://www.snf.ch/fr/6AywkKU0LqBlQ92j/news/des-precisions-sur-le-covid-long" target="_blank">étude de cohorte</a> (3000 personnes) qui a mis en évidence l’existence d’une corrélation entre la gravité de l’infection et l’apparition de symptômes du Covid long  
+* Une méthode pour estimer rapidement et à moindre coût le <a href="https://www.snf.ch/fr/Mhz1a3piOEoSgb2B/news/le-taux-de-reproduction-du-coronavirus-se-lit-dans-les-eaux-usees" target="_blank">taux de reproduction</a> du coronavirus à partir des eaux usées  
+* Des <a href="https://www.nfp78.ch/fr/news/des-candidats-vaccins-suisses-entament-la-phase-d-etudes-cliniques/" target="_blank">candidats vaccins suisses</a>, développés dans le cadres du PNR 78, entament la phase d’études cliniques (<a href="https://www.snf.ch/fr/XZ6J2kZHkf5aMROA/news/recherche-novatrice-sur-de-nouveaux-vaccins" target="_blank">voir aussi</a>)  
 
 ### Les sciences de la vie en tête de classement
 
 Une analyse plus détaillée des projets soutenus fait apparaître que presque deux tiers d’entre eux relèvent des sciences de la vie, presque un tiers des disciplines des sciences humaines et sociales et seulement un petit nombre des mathématiques, sciences naturelles et de l’ingénieur. Une répartition qui représente la nature du défi que pose la pandémie et qui contraste avec l’ensemble des projets financés par le FNS, qui sont plutôt équitablement répartis entre les disciplines. 
 
-Cette donne est toutefois amenée à changer puisqu’un nouveau Programme national de recherche <a href="https://www.nfp80.ch/en/" target="_blank">«$~$Covid-19 et société$~$»</a> (PNR 80) démarre en 2022. Ce PNR s’adresse principalement aux sciences humaines et sociales. Les projets seront sélectionnés au cours de l’été 2022. 
+Cette donne est toutefois amenée à changer puisqu’un nouveau Programme national de recherche <a href="https://www.nfp80.ch/en/" target="_blank">«$~$Covid-19 et société$~$»</a> (PNR 80) démarre en 2021. Ce PNR s’adresse principalement aux sciences humaines et sociales. Les projets seront sélectionnés au cours de l’été 2022. 
 
 <div class="plot-box">
 
-<div class="plot-title">Nombre et pourcentage de subsides liés au Covid (sur un total de 107) par domaine de recherche</div>
+<div class="plot-title">Nombre et pourcentage de subsides liés au Covid-19 (sur un total de 107) par domaine de recherche</div>
 
 ```{r, out.width="100%"}
 covid_grants_df <- covid_grants_df %>% 
@@ -254,7 +254,12 @@ Les sciences de la vie remportent la palme du nombre de projets soutenus mais é
 <div class="plot-box">
 
 <div class="plot-title">Total des fonds dépensés (en francs suisses) sur `r n_applications` projets liés au covid pour chaque domaine de recherche.</div>
-
+<div class="hide-tablet hide-desktop">
+```{r, out.width='100%'}
+knitr::include_graphics(here("images", "fr_1.JPG"))
+```
+</div>
+<div class="hide-mobile">
 ```{r}
 covid_grants_df %>%  
   group_by(research_area) %>% 
@@ -271,7 +276,7 @@ covid_grants_df %>%
         align = c("l", "r", "r")) %>%
   kable_material(c("striped", "hover"))
 ```
-
+</div>
 </div>
 
 L’illustration suivante présente le nombre et le pourcentage de projets liés au coronavirus dans chaque discipline. On observe à nouveau la prédominance de certaines disciplines. La médecine préventive est sans surprise en tête de classement. La recherche fondamentale en biologie suit: de nombreux projets cherchent en effet à comprendre le virus. Mais on note aussi que quelques projets en sciences humaines et sociales s’intéressent aux réactions de la société face à la pandémie et aux conséquences de cette dernière. 
@@ -344,14 +349,19 @@ seven_top <- covid_grants_df %>%
 
 ### La recherche fondamentale nécessite d’importants fonds
 
-Si l’on analyse maintenant les disciplines les plus fréquentes dans les projets financés, on observe que les six premières disciplines sur les sept ayant le montant le plus élevé de financement relèvent des sciences de la vie. Les données dont nous disposons englobent un total de `r n_distinct(covid_grants_df$MainDisciplineLevel2_En)` disciplines différentes, mais nous constatons que la majorité des projets, `r sum(seven_top)` au total (`r round(sum(seven_top) / nrow(covid_grants_df) * 100)` \%), relèvent de l'une des sept disciplines les plus fréquentes.
+Si l’on analyse maintenant les disciplines les plus fréquentes dans les projets financés, on observe que les six premières disciplines sur les sept relèvent des sciences de la vie. Les données dont nous disposons englobent un total de `r n_distinct(covid_grants_df$MainDisciplineLevel2_En)` disciplines différentes, mais nous constatons que la majorité des projets, `r sum(seven_top)` projets au total (`r round(sum(seven_top) / nrow(covid_grants_df) * 100)` \%), relèvent de l'une des sept disciplines les plus fréquentes.
 
 La recherche fondamentale est onéreuse: le tableau montre que la discipline qui a reçu le plus d’argent -- `r round(sum(covid_grants_df %>% filter(MainDisciplineLevel2_En == "Basic Biological Research") %>% pull(AmountGranted)) / 1000000, 1)` millions de francs -- est la recherche fondamentale en biologie.
 
 <div class="plot-box">
 
 <div class="plot-title">Montant total (en francs suisses) accordés à des projets dans les sept disciplines les plus fréquentes.</div>
-
+<div class="hide-tablet hide-desktop">
+```{r, out.width='100%'}
+knitr::include_graphics(here("images", "fr_2.JPG"))
+```
+</div>
+<div class="hide-mobile">
 ```{r, warning=FALSE}
 prev_med <- "Preventive Medicine (Epidemiology/Early Diagnosis/Prevention)"
 soz <- "Sociology, social work, political sciences, media and communication studies, health"
@@ -400,7 +410,7 @@ covid_grants_df %>%
         label = "disciplines_amount") %>%
   kable_material(c("striped", "hover"))
 ```
-
+</div>
 <div class="info-box">
 
 ### Registre des projets Covid-19

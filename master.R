@@ -27,13 +27,13 @@ datastory_name_fr <- "trouver-rapidement-des-solutions-a-la-pandemie-de-coronavi
 
 # English title and lead of the story (Mandatory, even if no EN version)
 title_en <- "Fast-tracking solutions to the coronavirus pandemic"
-lead_en <- "Coronavirus-related research funded by the Swiss National Science Foundation is successfully delivering fast and beneficial results."
+lead_en <- "Coronavirus-related research funded by the SNSF is successfully delivering fast and beneficial results."
 # German title and lead of the story (Mandatory, even if no DE version)
 title_de <- "Zeitnahe Lösungen für die Corona-Epidemie"
-lead_de <- "Der Schweizerische Nationalfonds unterstützt Forschung zum Coronavirus. Mit Erfolg: Bereits liegen relevante Ergebnisse vor."
+lead_de <- "Der SNF unterstützt Forschung zum Coronavirus. Mit Erfolg: Bereits liegen relevante Ergebnisse vor."
 # French title and lead of the story (Mandatory, even if no FR version)
 title_fr <- "Trouver rapidement des solutions à la pandémie de coronavirus"
-lead_fr <- "Le Fonds national suisse soutient la recherche en lien avec le coronavirus. Avec succès: les résultats sont rapides et utiles."
+lead_fr <- "Le FNS soutient la recherche en lien avec le coronavirus. Avec succès: les résultats sont rapides et utiles."
 # Contact persons, always (first name + last name)
 contact_person <- c("Oliver John", "Elise Frioud")
 # Mail address to be displayed as contact persons, put "datastories@snf.ch" for
